@@ -1,0 +1,123 @@
+<div id = "container" >
+  <table>
+    <tr>
+      <th style="width:50%">Device</th>
+      <th *ngIf="editMode === false">Category</th>
+      <th *ngIf="editMode === false">Condition</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr *ngIf="editMode === false">
+      <td>{{device.name}}</td>
+      <td><i class="fa fa-remove">{{device.category.name}}</i></td>
+      <td><i class="fa fa-check">{{device.condition}}</i></td>
+      <td><i style="cursor: pointer" class="material-icons" (click)="switchOnEditMode()">create</i></td>
+      <td><i style="cursor: pointer" class="material-icons" (click)="deleteDevice(device.id)">close</i></td>
+    </tr>
+
+    <!-- ***************** EDIT MODE ****************** -->
+    <tr *ngIf="editMode === true">
+      <td>
+        <mat-form-field class="title-full-width">
+          <input matInput placeholder="Device name" [(ngModel)]="device.name">
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field>
+          <mat-label>Category</mat-label>
+          <mat-select [(ngModel)]="category.name">
+            <mat-option *ngFor="let category of categories" [value]="category.name" >
+              {{category.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field>
+          <mat-label>Condition</mat-label>
+          <mat-select [(ngModel)]="condition">
+            <mat-option *ngFor="let condition of keys(conditions)" [value]="condition">
+              {{condition}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+
+      <td><i style="cursor: pointer" class="material-icons" (click)="saveChanges()">save</i></td>
+    </tr>
+  </table>
+  <div style="min-height: 5%"></div>
+
+  <!-- **************** PARAMETERS ********************* -->
+  <table>
+    <tr>
+      <th style="width:50%">Parameters ({{parameters.length}})</th>
+      <th></th>
+    <tr *ngFor = "let parameter of parameters">
+      <td>{{parameter.name.value}}</td>
+      <td><i class="fa fa-check">{{parameter.value}}</i></td>
+      <td><i style="cursor: pointer" class="material-icons" (click)="deleteParameterById(parameter.id)">close</i></td>
+    </tr>
+    <tr>
+
+      <td>
+        <mat-form-field>
+          <mat-label>Parameter type</mat-label>
+          <mat-select [(ngModel)]="parameterName">
+            <mat-option *ngFor="let parameterName of parameterNames" [value]="parameterName">
+              {{parameterName.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="content-full-width">
+          <input matInput placeholder="Parameter value" [(ngModel)]="parameterValue">
+        </mat-form-field>
+      </td>
+
+      <td>
+        <button mat-raised-button color="primary" (click)="addParameter()">Add parameter</button>
+      </td>
+    </tr>
+  </table>
+  <div style="min-height: 5%"></div>
+
+  <!-- **************** COMMENTS **************** -->
+  <table>
+    <tr>
+      <th>Comments ({{comments.length}})</th>
+      <th style="width:50%"></th>
+    </tr>
+    <tr *ngFor = "let comment of comments">
+      <td>{{comment.title}}</td>
+      <td><i class="fa fa-check">{{comment.content}}</i></td>
+      <td><i style="cursor: pointer" class="material-icons" (click)="deleteCommentById(comment.id)">close</i></td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field class="title-full-width">
+          <input matInput placeholder="Enter title" [(ngModel)]="commentTitle">
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field class="content-full-width">
+          <input matInput placeholder="Enter comment" [(ngModel)]="commentContent">
+        </mat-form-field>
+      </td>
+
+      <td>
+        <button mat-raised-button color="primary" (click)="addComment()">Add comment</button>
+      </td>
+    </tr>
+  </table>
+
+</div>
+
+
+
+
+
