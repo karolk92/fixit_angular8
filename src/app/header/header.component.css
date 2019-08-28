@@ -1,0 +1,25 @@
+#container {
+    background-color: #98dafc;
+    min-height: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon {
+  float: left;
+}
+#title {
+  float: left;
+  text-align: center;
+  font-family: OstrichSansRounded-Medium;
+  font-size: 100px;
+  letter-spacing: 25px;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 140px; /* Preferred icon size */
+  display: inline-block;
+}

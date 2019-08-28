@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="wrapper">
+    <table>
+      <tr>
+        <th>Categories</th>
+      </tr>
+      <tr *ngFor="let category of categories">
+        <td>{{category.name}}</td>
+        <td><i style="cursor: pointer" class="material-icons" (click)="deleteCategory(category.id)">close</i></td>
+      </tr>
+    </table>
+  </div>
+  <div class="wrapper">
+    <table>
+      <tr>
+        <th>Parameters</th>
+      </tr>
+      <tr *ngFor="let parameter of parameterNames">
+        <td>{{parameter.value}}</td>
+        <td><i style="cursor: pointer" class="material-icons" (click)="deleteParameterName(parameter.id)">close</i></td>
+      </tr>
+    </table>
+  </div>
+  <div style="clear: both"></div>
+
+  <div class="adding_tool">
+    <table>
+      <tr>
+        <th style="width:30%">Add new values</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="content-full-width">
+            <input matInput placeholder="New category name" [(ngModel)]="categoryName">
+          </mat-form-field>
+        </td>
+        <td>
+          <button mat-raised-button (click)="saveCategory()">Add category</button>
+        </td>
+
+        <td>
+          <mat-form-field class="content-full-width">
+            <input matInput placeholder="New parameter name" [(ngModel)]="parameterName">
+          </mat-form-field>
+        </td>
+
+        <td>
+          <button mat-raised-button (click)="saveParameterType()">Add parameter</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

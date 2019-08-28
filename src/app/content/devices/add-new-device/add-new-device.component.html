@@ -1,0 +1,44 @@
+<div id="container">
+  <table>
+    <tr>
+      <th style="width:50%">Add new device</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field class="content-full-width">
+          <input matInput placeholder="Device name" [(ngModel)]="device.name">
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field>
+          <mat-label>Category</mat-label>
+          <mat-select [(ngModel)]="category">
+            <mat-option *ngFor="let category of categories" [value]="category">
+              {{category.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field>
+          <mat-label>Condition</mat-label>
+          <mat-select [(ngModel)]="condition">
+            <mat-option *ngFor="let condition of keys(conditions)" [value]="condition">
+              {{condition}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+
+      <td>
+        <button mat-raised-button color="primary" (click)="insertDevice()">Add device</button>
+      </td>
+    </tr>
+  </table>
+</div>

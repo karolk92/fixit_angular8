@@ -1,0 +1,27 @@
+<div id = "container" >
+  <table>
+    <tr>
+      <th style="width:50%">Device name</th>
+      <th>Category</th>
+      <th>Condition</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr *ngFor = "let device of devices">
+
+      <td>{{device.name}}</td>
+      <td><i>{{device.category.name}}</i></td>
+      <td><i [className]="device.condition === 'WORKING' ? 'working' : 'broken'">{{device.condition}}</i></td>
+
+      <td>
+        <nav>
+          <a [routerLink]="['/devices/', device.id]">
+            <button mat-raised-button color="primary">Details</button>
+          </a>
+        </nav>
+      <td>
+
+      <i style="cursor: pointer" class="material-icons" (click)="deleteDevice(device.id)">close</i></td>
+    </tr>
+  </table>
+</div>
